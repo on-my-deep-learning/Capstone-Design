@@ -5,6 +5,7 @@ import Home from './screens/Home';
 import Camera from './screens/Camera';
 import Setting from "./screens/Setting";
 import Recipe from "./screens/recipe/Recipe";
+import Invite from "./screens/friends/Invite";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -25,6 +26,7 @@ function App() {
         <Stack.Navigator>
             <Stack.Screen name="Home" component={TabNavigator} />
             <Stack.Screen name="Recipe" component={Recipe} />
+            <Stack.Screen name="Invite" component={Invite} />
         </Stack.Navigator>
     </NavigationContainer>
     

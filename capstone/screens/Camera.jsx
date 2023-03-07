@@ -6,8 +6,8 @@ import MyButton from '../components/Button';
 function Camera({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
-        <View style={styles.sqView}>
-            <MyButton title="카메라 공간"/>
+        <View style={styles.cView}>
+            <Text>카메라 공간</Text>
         </View>
         <View style={styles.buttonView}>
             <Round title="" onPress={() => navigation.navigate('Recipe')}/>
@@ -25,12 +25,14 @@ const styles = StyleSheet.create({
       justifyContent: 'flex-start',
     },
     buttonView: {
-        width: "95%",
+        width: "100%",
         alignItems: 'center',
         justifyContent: 'center',
     },
-    sqView: {
-        width: "100%",
+    cView: {
+        flex: 4,
+        alignItems: 'center',
+        justifyContent: 'center',
     }
   });
 

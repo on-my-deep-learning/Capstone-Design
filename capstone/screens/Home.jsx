@@ -4,7 +4,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import Title from '../components/Title';
 import MyButton from '../components/Button';
-import Recipe from './recipe/Recipe';
 
 function Home({ navigation }) {
   return (
@@ -13,7 +12,7 @@ function Home({ navigation }) {
             <Title title="주소"></Title>
             <MyButton title="레시피" onPress={() => navigation.navigate('Recipe')}/>
             <MyButton title="배달 및 예약"/>
-            <MyButton title="친구 초대"/>
+            <MyButton title="친구 초대" onPress={() => navigation.navigate('Invite')}/>
         </View>
     </SafeAreaView>
     
