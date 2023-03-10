@@ -10,7 +10,7 @@ function Camera({ navigation }) {
             <Text>카메라 공간</Text>
         </View>
         <View style={styles.buttonView}>
-            <Round title="" onPress={() => navigation.navigate('Recipe')}/>
+            <Round title="" onPress={() => navigation.navigate('Foodresult')}/>
         </View>
     </SafeAreaView>
     

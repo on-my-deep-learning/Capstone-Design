@@ -6,6 +6,8 @@ import Camera from './screens/Camera';
 import Setting from "./screens/Setting";
 import Recipe from "./screens/recipe/Recipe";
 import Invite from "./screens/friends/Invite";
+import Foodresult from "./screens/result/Foodresult"
+import Detail from "./screens/recipe/Detail";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -27,6 +29,8 @@ function App() {
             <Stack.Screen name="Home" component={TabNavigator} />
             <Stack.Screen name="Recipe" component={Recipe} />
             <Stack.Screen name="Invite" component={Invite} />
+            <Stack.Screen name="Foodresult" component={Foodresult} />
+            <Stack.Screen name="Detail" component={Detail} />
         </Stack.Navigator>
     </NavigationContainer>
     

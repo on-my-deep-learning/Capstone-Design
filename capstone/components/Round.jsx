@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, Dimensions } from 'react-native';
 
 const Round = ({ title, onPress }) => (
   <TouchableOpacity style={styles.button} onPress={onPress}>
@@ -7,15 +7,18 @@ const Round = ({ title, onPress }) => (
   </TouchableOpacity>
 );
 
+const { width, height } = Dimensions.get("window");
+const radius = Math.floor(width / 5 + 10);
+
 const styles = StyleSheet.create({
   button: {
     backgroundColor: '#53796E',
     alignItems: 'center',
     justifyContent: 'center',
-    width: 70,
-    height: 70,
-    marginBottom: 30,
-    borderRadius: 35,
+    width: radius,
+    height: radius,
+    marginBottom: 10,
+    borderRadius: radius / 2,
   },
   text: {
     color: '#FFFFFF',
