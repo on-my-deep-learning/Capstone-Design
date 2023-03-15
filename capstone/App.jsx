@@ -8,6 +8,7 @@ import Recipe from "./screens/recipe/Recipe";
 import Invite from "./screens/friends/Invite";
 import Foodresult from "./screens/result/Foodresult"
 import Detail from "./screens/recipe/Detail";
+import Join from "./screens/login/Join"
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -31,6 +32,7 @@ function App() {
             <Stack.Screen name="Invite" component={Invite} />
             <Stack.Screen name="Foodresult" component={Foodresult} />
             <Stack.Screen name="Detail" component={Detail} />
+            <Stack.Screen name="Join" component={Join} />
         </Stack.Navigator>
     </NavigationContainer>
     

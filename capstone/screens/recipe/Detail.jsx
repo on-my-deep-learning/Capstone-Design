@@ -1,12 +1,14 @@
 import { StyleSheet, Text, View, Button, SafeAreaView } from 'react-native';
 import React from 'react';
+import ImgButton from '../../components/ImgButton'
 
-function Detail() {
+function Detail({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
-        <View style={styles.buttonView}>
-            <Text>Detail</Text>
-        </View>
+        <ImgButton title='text' style={styles.buttonView} onPress={() => navigation.navigate('Foodresult')}>
+            <View style={styles.imgView}/>
+            <Text>노란콩도시락</Text>
+        </ImgButton>
     </SafeAreaView>
     
   );
@@ -21,7 +23,13 @@ const styles = StyleSheet.create({
       
     },
     buttonView: {
-        width: "95%",
+      width: "95%",
+      height: "15%",
+    },
+    imgView: {
+      width: "30%",
+      height: "100%",
+      backgroundColor: '#8EBDA9',
     }
   });
 

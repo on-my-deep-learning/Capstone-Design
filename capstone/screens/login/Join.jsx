@@ -1,13 +1,11 @@
 import { StyleSheet, Text, View, Button, SafeAreaView } from 'react-native';
 import React from 'react';
 
-function Setting({ navigation }) {
+function Foodresult() {
   return (
     <SafeAreaView style={styles.container}>
         <View style={styles.buttonView}>
-            <View style={styles.imgView}/>
-            <Text>로그인하세요</Text>
-            <Button title='회원가입' onPress={() => navigation.navigate('Join')}></Button>
+            <Text>Result</Text>
         </View>
     </SafeAreaView>
     
@@ -24,14 +22,7 @@ const styles = StyleSheet.create({
     },
     buttonView: {
         width: "95%",
-        flexWrap: 'wrap',
-        flexDirection: 'row',
-    },
-    imgView: {
-      width: 100,
-      height: 100,
-      backgroundColor: '#8EBDA9',
     }
   });
 
-export default Setting;
+export default Foodresult;
