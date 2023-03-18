@@ -1,32 +1,45 @@
-const mysql = require('mysql2/promise');
+import 'dotenv/config';
+import { createPool } from 'mysql2/promise';
 
-const dbConfig = {
-  host: 'localhost',
-  user: 'root',
-  password: '1021',
-  database: 'capston_db',
+const config = {
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
+  user: process.env.DB_USER,
+  password: process.env.DB_PW,
+  multipleStatements: true,
 };
 
-class Database {
+class DB {
+  static instace;
+  pool;
+
   constructor() {
-    if (Database.instance) {
-      return Database.instance;
-    }
-    Database.instance = this;
-    this.pool = mysql.createPool(dbConfig);
+    this.pool = createPool(config);
   }
 
-  async getConnection() {
+  static getInstance() {
+    if (!DB.instance) {
+      DB.instance = new DB();
+    }
+    return DB.instance;
+  }
+
+  async query(sql, values) {
+    let connection;
     try {
-      const conn = await this.pool.getConnection();
-      return conn;
+      connection = await this.pool.getConnection();
+      const [result] = await connection.query(sql, values);
+      return result;
     } catch (err) {
-      console.error(err);
+      console.log(err);
       throw err;
+    } finally {
+      if (connection) {
+        connection.release();
+      }
     }
   }
 }
 
-const db = new Database();
-
-module.exports = db;
+export const db = DB.getInstance();

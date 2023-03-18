@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     },
     imgView: {
       width: "30%",
-      height: "100%",
+      height: "30%",
       backgroundColor: '#8EBDA9',
     }
   });
