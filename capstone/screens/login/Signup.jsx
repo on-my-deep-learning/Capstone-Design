@@ -9,7 +9,7 @@ import {
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 
-function Foodresult() {
+function Signup() {
   const [user, setUser] = useState({
     id: '',
     password: '',
@@ -109,4 +109,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Foodresult;
+export default Signup;
