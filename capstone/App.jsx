@@ -9,6 +9,7 @@ import Invite from './screens/friends/Invite';
 import Foodresult from './screens/result/Foodresult';
 import Detail from './screens/recipe/Detail';
 import Signup from './screens/login/Signup';
+import Login from './screens/login/Login.jsx';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -31,6 +32,7 @@ function App() {
         <Stack.Screen name="Foodresult" component={Foodresult} />
         <Stack.Screen name="Detail" component={Detail} />
         <Stack.Screen name="Signup" component={Signup} />
+        <Stack.Screen name="Login" component={Login} />
       </Stack.Navigator>
     </NavigationContainer>
   );

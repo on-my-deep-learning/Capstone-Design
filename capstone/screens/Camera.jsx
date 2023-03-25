@@ -12,29 +12,11 @@ import {Camera, useCameraDevices} from 'react-native-vision-camera';
 import MyButton from '../components/Button';
 
 function CameraScreen({navigation}) {
-  const devices = useCameraDevices();
-  const device = devices.back;
-
-  const initCamera = async () => {
-    await Camera.requestCameraPermission();
-  };
-
-  useEffect(() => {
-    initCamera();
-  }, []);
-
-  const CameraView = () => {
-    if (null == device) {
-      return <ActivityIndicator size={'large'} color="#0000ff" />;
-    }
-    return (
-      <Camera style={StyleSheet.absoluteFill} device={device} isActive={true} />
-    );
-  };
-
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.cView}>{CameraView()}</View>
+      <View style={styles.cView}>
+        <Text>asd</Text>
+      </View>
       <View style={styles.buttonView}>
         <Round title="" onPress={() => navigation.navigate('Foodresult')} />
       </View>

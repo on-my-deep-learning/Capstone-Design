@@ -10,6 +10,9 @@ function Setting({navigation}) {
         <Button
           title="회원가입"
           onPress={() => navigation.navigate('Signup')}></Button>
+        <Button
+          title="로그인"
+          onPress={() => navigation.navigate('Login')}></Button>
       </View>
     </SafeAreaView>
   );
