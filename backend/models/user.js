@@ -13,6 +13,12 @@ const User = {
     VALUES (?, ?, ?, ?, ?, ?, 0);`;
     await db.query(query, [id, password, name, address, phone, nickname]);
   },
+
+  login: async (id) => {
+    const query = `SELECT * FROM USER WHERE id = ?`;
+    const result = await db.query(query, [id]);
+    return result;
+  },
 };
 
 export default User;
