@@ -1,36 +1,29 @@
-import { StyleSheet, Text, View, Button, SafeAreaView } from 'react-native';
+import {StyleSheet, Text, View, Button, SafeAreaView} from 'react-native';
 import React from 'react';
-import ImgButton from '../../components/ImgButton'
+import ImgButton from '../../components/ImgButton';
 
-function Detail({ navigation }) {
+function Detail({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
-        <ImgButton title='text' style={styles.buttonView} onPress={() => navigation.navigate('Foodresult')}>
-            <View style={styles.imgView}/>
-            <Text>노란콩도시락</Text>
-        </ImgButton>
+      <ImgButton
+        title="노란콩 도시락"
+        style={styles.buttonView}
+        onPress={() => navigation.navigate('Foodresult')}></ImgButton>
     </SafeAreaView>
-    
   );
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-      
-    },
-    buttonView: {
-      width: "95%",
-      height: "15%",
-    },
-    imgView: {
-      width: "30%",
-      height: "30%",
-      backgroundColor: '#8EBDA9',
-    }
-  });
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  buttonView: {
+    width: '95%',
+    height: '100%',
+  },
+});
 
 export default Detail;

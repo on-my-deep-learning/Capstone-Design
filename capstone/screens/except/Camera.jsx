@@ -7,9 +7,8 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import React, {useEffect} from 'react';
-import Round from '../components/Round';
-import {Camera, useCameraDevices} from 'react-native-vision-camera';
-import MyButton from '../components/Button';
+import Round from '../../components/Round';
+import MyButton from '../../components/Button';
 
 function CameraScreen({navigation}) {
   return (

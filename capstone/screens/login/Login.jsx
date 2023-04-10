@@ -10,7 +10,8 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import React from 'react';
 
-function Login() {
+function Login({navigation}) {
+  const [visible, setVisible] = useState(true);
   const [user, setUser] = useState({
     id: '',
     password: '',
@@ -26,13 +27,16 @@ function Login() {
 
   const onSubmit = async () => {
     try {
-      await axios.post('http://127.0.0.1:3000/users/login', user);
+      const res = await axios.post('http://127.0.0.1:3000/users/login', user);
+      const token = res.data.token;
+      console.log(token);
     } catch (err) {
       // toast
       console.log(err);
-    } finally {
-      // navigation
+      setVisible(!visible);
+      return;
     }
+    navigation.navigate('Home');
   };
   return (
     <SafeAreaView style={styles.container}>
@@ -52,6 +56,13 @@ function Login() {
           />
         </View>
         <Button title="submit" onPress={onSubmit} />
+        <View>
+          {visible ? null : (
+            <Text style={styles.errtext}>
+              아이디 혹은 비밀번호가 틀렸습니다
+            </Text>
+          )}
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -74,6 +85,13 @@ const styles = StyleSheet.create({
     height: 60,
     fontSize: 40,
     justifyContent: 'center',
+  },
+  errtext: {
+    color: 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 40,
+    fontSize: 20,
   },
 });
 

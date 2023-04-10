@@ -1,18 +1,17 @@
 import {StyleSheet, Text, View, Button, SafeAreaView} from 'react-native';
 import React from 'react';
+import MyButton from '../components/Button';
 
 function Setting({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.buttonView}>
-        <View style={styles.imgView} />
-        <Text>로그인하세요</Text>
-        <Button
+        <MyButton
           title="회원가입"
-          onPress={() => navigation.navigate('Signup')}></Button>
-        <Button
+          onPress={() => navigation.navigate('Signup')}></MyButton>
+        <MyButton
           title="로그인"
-          onPress={() => navigation.navigate('Login')}></Button>
+          onPress={() => navigation.navigate('Login')}></MyButton>
       </View>
     </SafeAreaView>
   );
@@ -27,13 +26,6 @@ const styles = StyleSheet.create({
   },
   buttonView: {
     width: '95%',
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-  },
-  imgView: {
-    width: 100,
-    height: 100,
-    backgroundColor: '#8EBDA9',
   },
 });
 
