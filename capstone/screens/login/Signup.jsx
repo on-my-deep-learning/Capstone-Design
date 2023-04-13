@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 function Signup() {
   const [user, setUser] = useState({
@@ -42,47 +43,79 @@ function Signup() {
     <SafeAreaView style={styles.container}>
       <View style={styles.buttonView}>
         <View style={styles.input}>
-          <Text>id</Text>
+          <Text>아이디</Text>
           <TextInput
             value={id}
             onChangeText={text => onChangeText('id', text)}
           />
         </View>
         <View style={styles.input}>
-          <Text>password</Text>
+          <Text>비밀번호</Text>
           <TextInput
             value={password}
             onChangeText={text => onChangeText('password', text)}
           />
         </View>
         <View style={styles.input}>
-          <Text>name</Text>
+          <Text>이름</Text>
           <TextInput
             value={name}
             onChangeText={text => onChangeText('name', text)}
           />
         </View>
         <View style={styles.input}>
-          <Text>address</Text>
+          <Text>주소</Text>
           <TextInput
             value={address}
             onChangeText={text => onChangeText('address', text)}
           />
         </View>
         <View style={styles.input}>
-          <Text>phone</Text>
+          <Text>전화번호</Text>
           <TextInput
             value={phone}
             onChangeText={text => onChangeText('phone', text)}
           />
         </View>
         <View style={styles.input}>
-          <Text>nickname</Text>
+          <Text>별명</Text>
           <TextInput
             value={nickname}
             onChangeText={text => onChangeText('nickname', text)}
           />
         </View>
+        <View style={styles.input}>
+          <Text>질병</Text>
+          <TextInput />
+        </View>
+        <View style={styles.input}>
+          <Text>알레르기</Text>
+          <TextInput />
+        </View>
+        <BouncyCheckbox
+          text="개인정보 수집 및 이용에 동의합니다."
+          fillColor="#F5A623"
+          unfillColor="#fff"
+          iconStyle={{borderColor: '#F5A623'}}
+          textStyle={{color: '#F5A623'}}
+          onPress={isChecked => console.log(isChecked)}
+        />
+        <BouncyCheckbox
+          text="개인정보 제3자 제공에 동의합니다."
+          fillColor="#F5A623"
+          unfillColor="#fff"
+          iconStyle={{borderColor: '#F5A623'}}
+          textStyle={{color: '#F5A623'}}
+          onPress={isChecked => console.log(isChecked)}
+        />
+        <BouncyCheckbox
+          text="마케팅 정보 수신에 동의합니다."
+          fillColor="#F5A623"
+          unfillColor="#fff"
+          iconStyle={{borderColor: '#F5A623'}}
+          textStyle={{color: '#F5A623'}}
+          onPress={isChecked => console.log(isChecked)}
+        />
         <Button title="submit" onPress={onSubmit} />
       </View>
     </SafeAreaView>

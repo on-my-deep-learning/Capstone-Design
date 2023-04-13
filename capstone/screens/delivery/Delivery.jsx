@@ -13,7 +13,7 @@ function Recipe({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.input}>
-        <TextInput />
+        <TextInput placeholder="검색하기" />
       </View>
       <View style={styles.buttonView}>
         <Round title="한식" onPress={() => navigation.navigate('Detail')} />
@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     height: 60,
     fontSize: 40,
     justifyContent: 'center',
+    marginLeft: 20,
   },
   buttonView: {
     flexWrap: 'wrap',

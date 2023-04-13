@@ -4,12 +4,13 @@ import Home from './screens/Home';
 import Setting from './screens/Setting';
 import Recipe from './screens/recipe/Recipe';
 import Invite from './screens/except/Invite';
-import Foodresult from './screens/result/Foodresult';
+import Foodresult from './screens/except/Foodresult';
 import Detail from './screens/recipe/Detail';
 import Signup from './screens/login/Signup';
-import Login from './screens/login/Login.jsx';
+import Login from './screens/login/Login';
 import Delivery from './screens/delivery/Delivery';
 import Recommend from './screens/ai/Recommend';
+import Menu from './screens/delivery/Menu';
 
 const Stack = createStackNavigator();
 
@@ -27,6 +28,7 @@ function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Delivery" component={Delivery} />
         <Stack.Screen name="Recommend" component={Recommend} />
+        <Stack.Screen name="Menu" component={Menu} />
       </Stack.Navigator>
     </NavigationContainer>
   );

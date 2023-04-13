@@ -20,11 +20,11 @@ function Invite({navigation}) {
             onPress={() => navigation.navigate('Foodresult')}></ImgButton>
         );
       })}
-      <View style={styles.buttonView}>
+      {/* <View style={styles.buttonView}>
         <MyButton
           title="다시 추천 받기"
           onPress={() => navigation.navigate('Recommend')}></MyButton>
-      </View>
+      </View> */}
     </SafeAreaView>
   );
 }

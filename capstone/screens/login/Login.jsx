@@ -9,6 +9,7 @@ import {
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import React from 'react';
+import {create} from 'zustand';
 
 function Login({navigation}) {
   const [visible, setVisible] = useState(true);
@@ -25,11 +26,19 @@ function Login({navigation}) {
       [id]: value,
     });
 
+  const useStore = create(set => ({
+    id: '',
+    setId: id => set({id}),
+    token: '',
+    setToken: token => set({token}),
+  }));
+
   const onSubmit = async () => {
     try {
       const res = await axios.post('http://127.0.0.1:3000/users/login', user);
       const token = res.data.token;
-      console.log(token);
+      useStore.setState({id: id, token: token});
+      console.log(useStore.getState());
     } catch (err) {
       // toast
       console.log(err);
@@ -37,6 +46,7 @@ function Login({navigation}) {
       return;
     }
     navigation.navigate('Home');
+    setVisible(visible);
   };
   return (
     <SafeAreaView style={styles.container}>

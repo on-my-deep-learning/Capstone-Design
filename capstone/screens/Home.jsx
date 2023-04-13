@@ -8,11 +8,13 @@ import {
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import React from 'react';
+import React, {useState} from 'react';
 import Title from '../components/Title';
 import MyButton from '../components/Button';
+import {useStore} from '../store';
 
 function Home({navigation}) {
+  const {id} = useStore();
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.buttonView}>
@@ -23,7 +25,7 @@ function Home({navigation}) {
               style={styles.image}
             />
             <Text>lv.0</Text>
-            <Text style={styles.myText}>nickname</Text>
+            <Text style={styles.myText}>{id}</Text>
           </View>
         </View>
         <MyButton
