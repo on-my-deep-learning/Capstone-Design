@@ -1,8 +1,10 @@
 import {create} from 'zustand';
 
 const useStore = create(set => ({
-  set({storeId}) {
-    set({storeId: id});
-  },
+  id: '',
+  setId: id => set({id}),
+  token: '',
+  setToken: token => set({token}),
 }));
+
 export default useStore;

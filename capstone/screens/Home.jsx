@@ -11,10 +11,10 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React, {useState} from 'react';
 import Title from '../components/Title';
 import MyButton from '../components/Button';
-import {useStore} from '../store';
+import useStore from '../store.js';
 
 function Home({navigation}) {
-  const {id} = useStore();
+  const {id} = useStore(state => state);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.buttonView}>
@@ -24,7 +24,7 @@ function Home({navigation}) {
               source={require('../image/profile.jpg')}
               style={styles.image}
             />
-            <Text>lv.0</Text>
+            <Text>lv.1</Text>
             <Text style={styles.myText}>{id}</Text>
           </View>
         </View>

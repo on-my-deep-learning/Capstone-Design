@@ -9,7 +9,7 @@ import {
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import React from 'react';
-import {create} from 'zustand';
+import useStore from '../../store.js';
 
 function Login({navigation}) {
   const [visible, setVisible] = useState(true);
@@ -26,18 +26,12 @@ function Login({navigation}) {
       [id]: value,
     });
 
-  const useStore = create(set => ({
-    id: '',
-    setId: id => set({id}),
-    token: '',
-    setToken: token => set({token}),
-  }));
-
   const onSubmit = async () => {
     try {
       const res = await axios.post('http://127.0.0.1:3000/users/login', user);
-      const token = res.data.token;
-      useStore.setState({id: id, token: token});
+      const res_token = res.data.token;
+      useStore.setState({id: id});
+      useStore.setState({token: res_token});
       console.log(useStore.getState());
     } catch (err) {
       // toast
@@ -52,20 +46,20 @@ function Login({navigation}) {
     <SafeAreaView style={styles.container}>
       <View style={styles.buttonView}>
         <View style={styles.input}>
-          <Text>id</Text>
+          <Text>아이디</Text>
           <TextInput
             value={id}
             onChangeText={text => onChangeText('id', text)}
           />
         </View>
         <View style={styles.input}>
-          <Text>password</Text>
+          <Text>비밀번호</Text>
           <TextInput
             value={password}
             onChangeText={text => onChangeText('password', text)}
           />
         </View>
-        <Button title="submit" onPress={onSubmit} />
+        <Button title="로그인" onPress={onSubmit} />
         <View>
           {visible ? null : (
             <Text style={styles.errtext}>

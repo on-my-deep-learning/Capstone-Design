@@ -1,11 +1,12 @@
 import {StyleSheet, Text, View, Button, SafeAreaView} from 'react-native';
 import React from 'react';
 
-function Menu() {
+function Menu({route}) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.buttonView}>
-        <Text>Result</Text>
+        <Text>result</Text>
+        <Text>{route.params.id}</Text>
       </View>
     </SafeAreaView>
   );

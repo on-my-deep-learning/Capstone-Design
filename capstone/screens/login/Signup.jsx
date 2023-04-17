@@ -9,8 +9,13 @@ import {
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import Slider from '@react-native-community/slider';
 
-function Signup() {
+function Signup({navigation}) {
+  const [sliderValue_a, setSliderValue_a] = useState(0);
+  const [sliderValue_b, setSliderValue_b] = useState(0);
+  const [sliderValue_c, setSliderValue_c] = useState(0);
+
   const [user, setUser] = useState({
     id: '',
     password: '',
@@ -35,7 +40,7 @@ function Signup() {
       // toast
       console.log(err);
     } finally {
-      // navigation
+      navigation.navigate('건강하게먹어요!');
     }
   };
 
@@ -78,19 +83,48 @@ function Signup() {
           />
         </View>
         <View style={styles.input}>
-          <Text>별명</Text>
-          <TextInput
-            value={nickname}
-            onChangeText={text => onChangeText('nickname', text)}
-          />
-        </View>
-        <View style={styles.input}>
           <Text>질병</Text>
           <TextInput />
         </View>
         <View style={styles.input}>
           <Text>알레르기</Text>
           <TextInput />
+        </View>
+        <View style={styles.input}>
+          <Text style={styles.text}>당도 : {sliderValue_a}</Text>
+          <Slider
+            value={sliderValue_a}
+            onValueChange={e => setSliderValue_a(e)}
+            minimumValue={0}
+            maximumValue={100}
+            minimumTrackTintColor="#53796E"
+            maximumTrackTintColor="#8EBDA9"
+            step={5}
+          />
+        </View>
+        <View style={styles.input}>
+          <Text style={styles.text}>염도 : {sliderValue_b}</Text>
+          <Slider
+            value={sliderValue_b}
+            onValueChange={e => setSliderValue_b(e)}
+            minimumValue={0}
+            maximumValue={100}
+            minimumTrackTintColor="#53796E"
+            maximumTrackTintColor="#8EBDA9"
+            step={5}
+          />
+        </View>
+        <View style={styles.input}>
+          <Text style={styles.text}>맵기 : {sliderValue_c}</Text>
+          <Slider
+            value={sliderValue_c}
+            onValueChange={e => setSliderValue_c(e)}
+            minimumValue={0}
+            maximumValue={100}
+            minimumTrackTintColor="#53796E"
+            maximumTrackTintColor="#8EBDA9"
+            step={5}
+          />
         </View>
         <BouncyCheckbox
           text="개인정보 수집 및 이용에 동의합니다."

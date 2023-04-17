@@ -12,18 +12,27 @@ import Round from '../../components/Round';
 function Recipe({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.input}>
+      {/* <View style={styles.input}>
         <TextInput placeholder="검색하기" />
-      </View>
+      </View> */}
       <View style={styles.buttonView}>
-        <Round title="한식" onPress={() => navigation.navigate('Detail')} />
-        <Round title="한식" onPress={() => navigation.navigate('Foodresult')} />
-        <Round title="한식" onPress={() => navigation.navigate('Foodresult')} />
-        <Round title="한식" onPress={() => navigation.navigate('Foodresult')} />
-        <Round title="한식" onPress={() => navigation.navigate('Foodresult')} />
-        <Round title="한식" onPress={() => navigation.navigate('Foodresult')} />
-        <Round title="한식" onPress={() => navigation.navigate('Foodresult')} />
-        <Round title="한식" onPress={() => navigation.navigate('Foodresult')} />
+        <Round
+          title="한식"
+          onPress={() => navigation.navigate('Restaurant', {id: 1})}
+        />
+        <Round title="일식" onPress={() => navigation.navigate('Restaurant')} />
+        <Round title="중식" onPress={() => navigation.navigate('Restaurant')} />
+        <Round title="양식" onPress={() => navigation.navigate('Restaurant')} />
+        <Round
+          title="아시안"
+          onPress={() => navigation.navigate('Restaurant')}
+        />
+        <Round title="치킨" onPress={() => navigation.navigate('Restaurant')} />
+        <Round title="피자" onPress={() => navigation.navigate('Restaurant')} />
+        <Round
+          title="디저트"
+          onPress={() => navigation.navigate('Restaurant')}
+        />
       </View>
     </SafeAreaView>
   );

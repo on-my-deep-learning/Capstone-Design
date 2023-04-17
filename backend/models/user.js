@@ -9,9 +9,9 @@ const User = {
 
   signup: async (user) => {
     const { id, password, name, address, phone, nickname } = user;
-    const query = `INSERT INTO USER (id, pw, name, address, phone, nickname, access)
-    VALUES (?, ?, ?, ?, ?, ?, 0);`;
-    await db.query(query, [id, password, name, address, phone, nickname]);
+    const query = `INSERT INTO USER (id, pw, name, address, phone, level)
+    VALUES (?, ?, ?, ?, ?, 0);`;
+    await db.query(query, [id, password, name, address, phone]);
   },
 
   login: async (id) => {

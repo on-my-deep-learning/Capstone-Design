@@ -4,11 +4,11 @@ import MyButton from '../../components/SlimButton';
 import ImgButton from '../../components/ImgButton';
 import {useState, useEffect} from 'react';
 
-function Recommend({navigation}) {
+function Restaurant({navigation}) {
   let [menu, setmenu] = useState([
     '노란콩 도시락',
     '쿼카 샐러드',
-    '낑깡 떡볶이',
+    '돼지 빅스비',
   ]);
   return (
     <SafeAreaView style={styles.container}>
@@ -18,9 +18,7 @@ function Recommend({navigation}) {
             key={index.toString()}
             title={item}
             style={styles.buttonView}
-            onPress={() =>
-              navigation.navigate('Menu', {id: index})
-            }></ImgButton>
+            onPress={() => navigation.navigate('Menu')}></ImgButton>
         );
       })}
       {/* <View style={styles.buttonView}>
@@ -44,4 +42,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Recommend;
+export default Restaurant;
