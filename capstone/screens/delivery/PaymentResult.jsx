@@ -1,18 +1,11 @@
 import {StyleSheet, Text, View, Button, SafeAreaView} from 'react-native';
 import React from 'react';
-import SlimButton from '../../components/SlimButton';
 
-function Menu({navigation, route}) {
+function PaymentResult({navigation, route}) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.buttonView}>
-        <Text style={styles.title}>{route.params.id}</Text>
-        <Text>가격 :</Text>
-        <Text>설명 :</Text>
-        <SlimButton
-          title="주문하기"
-          onPress={() => navigation.navigate('SetPayment')}
-        />
+        <Text>PaymentResult</Text>
       </View>
     </SafeAreaView>
   );
@@ -34,4 +27,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Menu;
+export default PaymentResult;

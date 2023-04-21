@@ -10,6 +10,7 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import Slider from '@react-native-community/slider';
+import SlimButton from '../../components/SlimButton';
 
 function Signup({navigation}) {
   const [sliderValue_a, setSliderValue_a] = useState(0);
@@ -91,7 +92,7 @@ function Signup({navigation}) {
           <TextInput />
         </View>
         <View style={styles.input}>
-          <Text style={styles.text}>당도 : {sliderValue_a}</Text>
+          <Text style={styles.text}>선호하는 당도 : {sliderValue_a}</Text>
           <Slider
             value={sliderValue_a}
             onValueChange={e => setSliderValue_a(e)}
@@ -103,7 +104,7 @@ function Signup({navigation}) {
           />
         </View>
         <View style={styles.input}>
-          <Text style={styles.text}>염도 : {sliderValue_b}</Text>
+          <Text style={styles.text}>선호하는 염도 : {sliderValue_b}</Text>
           <Slider
             value={sliderValue_b}
             onValueChange={e => setSliderValue_b(e)}
@@ -115,7 +116,7 @@ function Signup({navigation}) {
           />
         </View>
         <View style={styles.input}>
-          <Text style={styles.text}>맵기 : {sliderValue_c}</Text>
+          <Text style={styles.text}>선호하는 맵기 : {sliderValue_c}</Text>
           <Slider
             value={sliderValue_c}
             onValueChange={e => setSliderValue_c(e)}
@@ -128,29 +129,21 @@ function Signup({navigation}) {
         </View>
         <BouncyCheckbox
           text="개인정보 수집 및 이용에 동의합니다."
-          fillColor="#F5A623"
+          fillColor="#E69686"
           unfillColor="#fff"
-          iconStyle={{borderColor: '#F5A623'}}
-          textStyle={{color: '#F5A623'}}
-          onPress={isChecked => console.log(isChecked)}
-        />
-        <BouncyCheckbox
-          text="개인정보 제3자 제공에 동의합니다."
-          fillColor="#F5A623"
-          unfillColor="#fff"
-          iconStyle={{borderColor: '#F5A623'}}
-          textStyle={{color: '#F5A623'}}
+          iconStyle={{borderColor: '#E69686'}}
+          textStyle={{color: '#E69686'}}
           onPress={isChecked => console.log(isChecked)}
         />
         <BouncyCheckbox
           text="마케팅 정보 수신에 동의합니다."
-          fillColor="#F5A623"
+          fillColor="#E69686"
           unfillColor="#fff"
-          iconStyle={{borderColor: '#F5A623'}}
-          textStyle={{color: '#F5A623'}}
+          iconStyle={{borderColor: '#E69686'}}
+          textStyle={{color: '#E69686'}}
           onPress={isChecked => console.log(isChecked)}
         />
-        <Button title="submit" onPress={onSubmit} />
+        <SlimButton title="submit" onPress={onSubmit} />
       </View>
     </SafeAreaView>
   );

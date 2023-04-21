@@ -1,31 +1,26 @@
 import {StyleSheet, Text, View, Button, SafeAreaView} from 'react-native';
 import React from 'react';
-import MyButton from '../../components/SlimButton';
-import ImgButton from '../../components/ImgButton';
 import {useState, useEffect} from 'react';
+import ImgButton from '../../components/ImgButton';
 
-function Restaurant({navigation}) {
+function Menu({navigation, route}) {
   let [menu, setmenu] = useState([
     '노란콩 도시락',
     '쿼카 샐러드',
-    '돼지 빅스비',
+    '낑깡 떡볶이',
   ]);
   return (
     <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>{route.params.id}</Text>
       {menu.map((item, index) => {
         return (
           <ImgButton
             key={index.toString()}
             title={item}
             style={styles.buttonView}
-            onPress={() => navigation.navigate('Menu')}></ImgButton>
+            onPress={() => navigation.navigate('Menu', {id: item})}></ImgButton>
         );
       })}
-      {/* <View style={styles.buttonView}>
-        <MyButton
-          title="다시 추천 받기"
-          onPress={() => navigation.navigate('Recommend')}></MyButton>
-      </View> */}
     </SafeAreaView>
   );
 }
@@ -40,6 +35,12 @@ const styles = StyleSheet.create({
   buttonView: {
     width: '95%',
   },
+  title: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginVertical: 20,
+  },
 });
 
-export default Restaurant;
+export default Menu;

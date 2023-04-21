@@ -10,6 +10,7 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import React from 'react';
 import useStore from '../../store.js';
+import SlimButton from '../../components/SlimButton';
 
 function Login({navigation}) {
   const [visible, setVisible] = useState(true);
@@ -59,7 +60,7 @@ function Login({navigation}) {
             onChangeText={text => onChangeText('password', text)}
           />
         </View>
-        <Button title="로그인" onPress={onSubmit} />
+        <SlimButton title="로그인" onPress={onSubmit} />
         <View>
           {visible ? null : (
             <Text style={styles.errtext}>

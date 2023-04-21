@@ -7,7 +7,7 @@ const Button = ({title, onPress}) => (
       <View style={styles.imgView} />
       <View style={styles.description}>
         <Text style={styles.text}>{title}</Text>
-        {/* <Text style={styles.text}>ㅁ ㅁ ㅁ ㅁ ㅁ</Text> */}
+        {/* <Text style={styles.text}>15,000</Text> */}
       </View>
     </View>
   </TouchableOpacity>

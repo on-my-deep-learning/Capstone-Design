@@ -5,24 +5,13 @@ import ImgButton from '../../components/ImgButton';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 
-function Recommend({navigation}) {
+function Restaurant({navigation}) {
   let [menu, setmenu] = useState([
-    '노란콩 도시락',
-    '쿼카 샐러드',
-    '낑깡 떡볶이',
+    '코알라 찌개',
+    '쿼카 뼈해장국',
+    '웜뱃 제육볶음',
+    '나무늘보 볶음밥',
   ]);
-  const setRes = async () => {
-    try {
-      const restaurantList = await axios.get(
-        'http://localhost:3000/restaurant/name',
-      );
-      arr = restaurantList.data.restaurants;
-      menu = Object.values(arr);
-      console.log(menu[1].name);
-    } catch (err) {
-      console.log(err);
-    }
-  };
   return (
     <SafeAreaView style={styles.container}>
       {menu.map((item, index) => {
@@ -31,8 +20,9 @@ function Recommend({navigation}) {
             key={index.toString()}
             title={item}
             style={styles.buttonView}
-            // onPress={() => navigation.navigate('Menu', {id: item})}>
-            onPress={() => setRes()}></ImgButton>
+            onPress={() =>
+              navigation.navigate('Restaurant', {id: item})
+            }></ImgButton>
         );
       })}
       {/* <View style={styles.buttonView}>
@@ -56,4 +46,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Recommend;
+export default Restaurant;
