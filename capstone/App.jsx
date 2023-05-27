@@ -11,7 +11,10 @@ import Restaurant from './screens/delivery/Restaurant';
 import List from './screens/delivery/List';
 import Payment from './screens/delivery/Payment';
 import PaymentResult from './screens/delivery/PaymentResult';
-import SetPayment from './screens/delivery/SetPayment.jsx';
+import SetPayment from './screens/delivery/SetPayment';
+import User from './screens/login/User';
+import Survey from './screens/ai/Survey';
+import History from './screens/delivery/History';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +34,9 @@ function App() {
         <Stack.Screen name="Payment" component={Payment} />
         <Stack.Screen name="PaymentResult" component={PaymentResult} />
         <Stack.Screen name="SetPayment" component={SetPayment} />
+        <Stack.Screen name="User" component={User} />
+        <Stack.Screen name="Survey" component={Survey} />
+        <Stack.Screen name="History" component={History} />
       </Stack.Navigator>
     </NavigationContainer>
   );

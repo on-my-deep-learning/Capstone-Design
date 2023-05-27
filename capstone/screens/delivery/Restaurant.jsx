@@ -5,13 +5,15 @@ import ImgButton from '../../components/ImgButton';
 
 function Menu({navigation, route}) {
   let [menu, setmenu] = useState([
-    '노란콩 도시락',
-    '쿼카 샐러드',
-    '낑깡 떡볶이',
+    '코알라의 김치찌개',
+    '코알라의 된장찌개',
+    '코알라의 순두부찌개',
+    '코알라의 짜글이',
   ]);
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>{route.params.id}</Text>
+      <Text style={styles.text}>------메인메뉴------</Text>
       {menu.map((item, index) => {
         return (
           <ImgButton
@@ -40,6 +42,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     marginVertical: 20,
+  },
+  text: {
+    fontSize: 20,
+    marginVertical: 10,
+    textAlign: 'left',
   },
 });
 

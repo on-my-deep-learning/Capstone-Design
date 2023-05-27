@@ -47,17 +47,19 @@ function Login({navigation}) {
     <SafeAreaView style={styles.container}>
       <View style={styles.buttonView}>
         <View style={styles.input}>
-          <Text>아이디</Text>
+          <Text style={styles.text}>아이디</Text>
           <TextInput
             value={id}
             onChangeText={text => onChangeText('id', text)}
+            style={styles.text}
           />
         </View>
         <View style={styles.input}>
-          <Text>비밀번호</Text>
+          <Text style={styles.text}>비밀번호</Text>
           <TextInput
             value={password}
             onChangeText={text => onChangeText('password', text)}
+            style={styles.text}
           />
         </View>
         <SlimButton title="로그인" onPress={onSubmit} />
@@ -96,6 +98,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 40,
+    fontSize: 20,
+  },
+  text: {
     fontSize: 20,
   },
 });

@@ -9,36 +9,23 @@ import {
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React, {useState} from 'react';
-import Title from '../components/Title';
-import MyButton from '../components/Button';
-import UserButton from '../components/UserButton';
-import useStore from '../store.js';
+import useStore from '../../store.js';
+import SlimButton from '../../components/SlimButton';
 
 function Home({navigation}) {
   const {id} = useStore(state => state);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.buttonView}>
-        <View style={styles.flexView}>
-          {/* <View style={styles.profile}>
-            <Image
-              source={require('../image/profile.jpg')}
-              style={styles.image}
-            />
-            <Text>lv.1</Text>
-            <Text style={styles.myText}>{id}</Text>
-          </View> */}
-          <UserButton
-            title={id}
-            onPress={() => navigation.navigate('User')}></UserButton>
-        </View>
-        <MyButton
-          title="AI 추천 받기"
-          onPress={() => navigation.navigate('Recommend')}
-        />
-        <MyButton
-          title="다른거 먹을래요"
-          onPress={() => navigation.navigate('Delivery')}
+        <Text style={styles.myText}>아이디 : {id}</Text>
+        <Text style={styles.myText}>AI레벨 : 1</Text>
+        {/* <SlimButton
+          title="추가 설문 하러가기"
+          onPress={() => navigation.navigate('Survey')}
+        /> */}
+        <SlimButton
+          title="주문 내역"
+          onPress={() => navigation.navigate('History')}
         />
       </View>
     </SafeAreaView>
@@ -80,6 +67,7 @@ const styles = StyleSheet.create({
   },
   myText: {
     fontSize: 20,
+    marginVertical: 10,
   },
   image: {
     width: 70,

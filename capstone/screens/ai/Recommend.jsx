@@ -7,9 +7,9 @@ import axios from 'axios';
 
 function Recommend({navigation}) {
   let [menu, setmenu] = useState([
-    '노란콩 도시락',
-    '쿼카 샐러드',
-    '낑깡 떡볶이',
+    '노란콩 샐러드',
+    '너구리 특제 포케',
+    '곰곰 알리오올리오',
   ]);
   const setRes = async () => {
     try {
@@ -31,8 +31,9 @@ function Recommend({navigation}) {
             key={index.toString()}
             title={item}
             style={styles.buttonView}
-            // onPress={() => navigation.navigate('Menu', {id: item})}>
-            onPress={() => setRes()}></ImgButton>
+            onPress={() => navigation.navigate('Menu', {id: item})}>
+            {/* onPress={() => setRes()}> */}
+          </ImgButton>
         );
       })}
       {/* <View style={styles.buttonView}>

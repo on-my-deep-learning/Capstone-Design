@@ -67,7 +67,7 @@ function Payment({navigation}) {
         loading={
           <View
             style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <Text>결제중...</Text>
+            <Text style={styles.title}>결제중...</Text>
           </View>
         }
         data={params}
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     width: '95%',
   },
   title: {
-    fontSize: 20,
+    fontSize: 50,
     textAlign: 'center',
   },
 });
