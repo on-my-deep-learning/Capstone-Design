@@ -1,29 +1,53 @@
-import {StyleSheet, Text, View, Button, SafeAreaView} from 'react-native';
-import React from 'react';
-import {useState, useEffect} from 'react';
-import ImgButton from '../../components/ImgButton';
+import React, {useEffect, useState} from 'react';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import axios from 'axios';
 
-function Menu({navigation, route}) {
-  let [menu, setmenu] = useState([
-    '코알라의 토마토파스타',
-    '코알라의 까르보나라',
-    '코알라의 알리오올리오',
-    '코알라의 로제파스타',
-  ]);
+function Restaurant({route, navigation}) {
+  const {restaurant} = route.params;
+  const [food, setFood] = useState([]);
+
+  useEffect(() => {
+    console.log(restaurant);
+    fetchFood();
+  }, [restaurant]);
+
+  const fetchFood = async () => {
+    console.log('restaurant: ', restaurant);
+    try {
+      const response = await axios.get('http:/localhost:3000/menu/select', {
+        params: {
+          restaurant: restaurant,
+        },
+      });
+      const result = response.data;
+      console.log('result :', result);
+      setFood(result.food);
+    } catch (error) {
+      console.error('Error fetching food:', error);
+    }
+  };
+
+  const handleFoodPress = item => {
+    const restaurant = {
+      food_name: item.food_name,
+      food_idx: item.food_idx,
+    };
+    navigation.navigate('Restaurant', {restaurant});
+  };
+
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>{route.params.id}</Text>
-      <Text style={styles.text}>------메인메뉴------</Text>
-      {menu.map((item, index) => {
-        return (
-          <ImgButton
+    <View style={styles.container}>
+      <View style={styles.buttonView}>
+        {food.map((item, index) => (
+          <TouchableOpacity
             key={index.toString()}
-            title={item}
-            style={styles.buttonView}
-            onPress={() => navigation.navigate('Menu', {id: item})}></ImgButton>
-        );
-      })}
-    </SafeAreaView>
+            style={styles.foodButton}
+            onPress={() => handleFoodPress(item)}>
+            <Text style={styles.foodButtonText}>{item.food_name}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+    </View>
   );
 }
 
@@ -35,19 +59,19 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   buttonView: {
-    width: '95%',
+    width: '100%',
   },
-  title: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginVertical: 20,
-  },
-  text: {
-    fontSize: 20,
+  foodButton: {
     marginVertical: 10,
-    textAlign: 'left',
+    padding: 10,
+    backgroundColor: '#006400',
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  foodButtonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 
-export default Menu;
+export default Restaurant;

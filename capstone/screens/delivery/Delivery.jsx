@@ -9,50 +9,50 @@ import {
 import React from 'react';
 import Round from '../../components/Round';
 
-function Recipe({navigation}) {
+function Delivery({navigation}) {
   return (
-    <SafeAreaView style={styles.container}>
-      {/* <View style={styles.input}>
-        <TextInput placeholder="검색하기" />
-      </View> */}
+    <View style={styles.container}>
       <View style={styles.buttonView}>
         <Round
-          title="한식"
-          onPress={() => navigation.navigate('List', {id: 1})}
+          title="중식"
+          onPress={() => navigation.navigate('List', {category: '중식'})}
         />
-        <Round title="일식" onPress={() => navigation.navigate('List')} />
-        <Round title="중식" onPress={() => navigation.navigate('List')} />
-        <Round title="양식" onPress={() => navigation.navigate('List')} />
-        <Round title="아시안" onPress={() => navigation.navigate('List')} />
-        <Round title="치킨" onPress={() => navigation.navigate('List')} />
-        <Round title="피자" onPress={() => navigation.navigate('List')} />
-        <Round title="디저트" onPress={() => navigation.navigate('List')} />
+        <Round
+          title="양식"
+          onPress={() => navigation.navigate('List', {category: '양식'})}
+        />
+        <Round
+          title="분식"
+          onPress={() => navigation.navigate('List', {category: '분식'})}
+        />
+        <Round
+          title="햄버거"
+          onPress={() => navigation.navigate('List', {category: '햄버거'})}
+        />
+        <Round
+          title="치킨"
+          onPress={() => navigation.navigate('List', {category: '치킨'})}
+        />
+        <Round
+          title="피자"
+          onPress={() => navigation.navigate('List', {category: '피자'})}
+        />
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 
-const styles = StyleSheet.create({
+const styles = {
   container: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
-  input: {
-    width: '100%',
-    borderBottomWidth: 1,
-    borderBottomColor: 'grey',
-    height: 60,
-    fontSize: 40,
-    justifyContent: 'center',
-    marginLeft: 20,
-  },
   buttonView: {
     flexWrap: 'wrap',
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
-});
-
-export default Recipe;
+};
+export default Delivery;

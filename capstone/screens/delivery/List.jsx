@@ -1,46 +1,56 @@
-import {StyleSheet, Text, View, Button, SafeAreaView} from 'react-native';
-import React from 'react';
-import MyButton from '../../components/SlimButton';
-import ImgButton from '../../components/ImgButton';
-import {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import axios from 'axios';
 
-function Restaurant({navigation}) {
-  let [menu, setmenu] = useState([
-    // {
-    //   title: '코알라 파스타',
-    //   img: {require("/Users/rayley/ReactNativeProjects/capstone/image/biryani.png")},
-    // },
-    '코알라 파스타',
-    '쿼카 피자',
-    '나무늘보 필라프',
-  ]);
-  // let [img, setimg] = useState([
-  //   require('../../image/biryani.jpg'),
-  //   require('../../image/noodles.jpg'),
-  //   require('../../image/pizza.jpg'),
-  //   require('../../image/poke.jpg'),
-  // ]);
+function List({route, navigation}) {
+  const {category} = route.params;
+  const [restaurants, setRestaurants] = useState([]);
+
+  useEffect(() => {
+    fetchRestaurants();
+  }, [category]);
+
+  const fetchRestaurants = async () => {
+    try {
+      const response = await axios.get(
+        'http://localhost:3000/restaurant/name',
+        {
+          params: {
+            category: category,
+          },
+        },
+      );
+      const result = response.data;
+      setRestaurants(result.restaurants);
+    } catch (error) {
+      console.error('Error fetching restaurants:', error);
+    }
+  };
+
+  const handleRestaurantPress = item => {
+    const restaurant = {
+      restaurant_index: item.restaurant_index,
+      restaurant_name: item.restaurant_name,
+    };
+
+    navigation.navigate('Restaurant', {restaurant});
+  };
+
   return (
-    <SafeAreaView style={styles.container}>
-      {menu.map((item, index) => {
-        return (
-          <ImgButton
+    <View style={styles.container}>
+      <View style={styles.buttonView}>
+        {restaurants.map((item, index) => (
+          <TouchableOpacity
             key={index.toString()}
-            title={item}
-            // img={item.img}
-            style={styles.buttonView}
-            onPress={() =>
-              navigation.navigate('Restaurant', {id: item})
-            }></ImgButton>
-        );
-      })}
-      {/* <View style={styles.buttonView}>
-        <MyButton
-          title="다시 추천 받기"
-          onPress={() => navigation.navigate('Recommend')}></MyButton>
-      </View> */}
-    </SafeAreaView>
+            style={styles.restaurantButton}
+            onPress={() => handleRestaurantPress(item)}>
+            <Text style={styles.restaurantButtonText}>
+              {item.restaurant_name}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+    </View>
   );
 }
 
@@ -52,8 +62,19 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   buttonView: {
-    width: '95%',
+    width: '100%',
+  },
+  restaurantButton: {
+    marginVertical: 10,
+    padding: 10,
+    backgroundColor: '#006400',
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  restaurantButtonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 
-export default Restaurant;
+export default List;
