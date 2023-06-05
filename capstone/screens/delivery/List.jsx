@@ -7,11 +7,20 @@ import axios from 'axios';
 
 function Restaurant({navigation}) {
   let [menu, setmenu] = useState([
-    '코알라 찌개',
-    '쿼카 뼈해장국',
-    '웜뱃 제육볶음',
-    '나무늘보 볶음밥',
+    // {
+    //   title: '코알라 파스타',
+    //   img: {require("/Users/rayley/ReactNativeProjects/capstone/image/biryani.png")},
+    // },
+    '코알라 파스타',
+    '쿼카 피자',
+    '나무늘보 필라프',
   ]);
+  // let [img, setimg] = useState([
+  //   require('../../image/biryani.jpg'),
+  //   require('../../image/noodles.jpg'),
+  //   require('../../image/pizza.jpg'),
+  //   require('../../image/poke.jpg'),
+  // ]);
   return (
     <SafeAreaView style={styles.container}>
       {menu.map((item, index) => {
@@ -19,6 +28,7 @@ function Restaurant({navigation}) {
           <ImgButton
             key={index.toString()}
             title={item}
+            // img={item.img}
             style={styles.buttonView}
             onPress={() =>
               navigation.navigate('Restaurant', {id: item})

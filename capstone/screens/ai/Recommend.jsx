@@ -9,7 +9,7 @@ function Recommend({navigation}) {
   let [menu, setmenu] = useState([
     '노란콩 샐러드',
     '너구리 특제 포케',
-    '곰곰 알리오올리오',
+    '팬더 쌀국수',
   ]);
   const setRes = async () => {
     try {

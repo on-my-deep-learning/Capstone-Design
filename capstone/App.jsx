@@ -15,6 +15,7 @@ import SetPayment from './screens/delivery/SetPayment';
 import User from './screens/login/User';
 import Survey from './screens/ai/Survey';
 import History from './screens/delivery/History';
+// import R_menu from './screens/ai/R_menu';
 
 const Stack = createStackNavigator();
 
@@ -37,6 +38,7 @@ function App() {
         <Stack.Screen name="User" component={User} />
         <Stack.Screen name="Survey" component={Survey} />
         <Stack.Screen name="History" component={History} />
+        {/* <Stack.Screen name="R_menu" component={R_menu} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -5,10 +5,10 @@ import ImgButton from '../../components/ImgButton';
 
 function Menu({navigation, route}) {
   let [menu, setmenu] = useState([
-    '코알라의 김치찌개',
-    '코알라의 된장찌개',
-    '코알라의 순두부찌개',
-    '코알라의 짜글이',
+    '코알라의 토마토파스타',
+    '코알라의 까르보나라',
+    '코알라의 알리오올리오',
+    '코알라의 로제파스타',
   ]);
   return (
     <SafeAreaView style={styles.container}>

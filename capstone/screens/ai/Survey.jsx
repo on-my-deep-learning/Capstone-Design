@@ -17,7 +17,7 @@ function Home({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.buttonView}>
-        <Text style={styles.myText}>추가 설문</Text>
+        <Text style={styles.myText}>개인정보 수정</Text>
       </View>
     </SafeAreaView>
   );

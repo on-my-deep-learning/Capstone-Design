@@ -17,6 +17,14 @@ function Signup({navigation}) {
   const [sliderValue_a, setSliderValue_a] = useState(0);
   const [sliderValue_b, setSliderValue_b] = useState(0);
   const [sliderValue_c, setSliderValue_c] = useState(0);
+  let [disease, setdisease] = useState([
+    '고혈압',
+    '당뇨',
+    '간질환',
+    '위질환',
+    '신장질환',
+    '심장질환',
+  ]);
   let [allergy, setallergy] = useState([
     '새우',
     '굴',
@@ -39,7 +47,7 @@ function Signup({navigation}) {
     '닭고기',
     '복숭아',
     '토마토',
-    '아황산류',
+    // '아황산류',
   ]);
   const [user, setUser] = useState({
     id: '',
@@ -52,6 +60,7 @@ function Signup({navigation}) {
 
   const {id, password, name, address, phone, nickname} = user;
   const allergyList = [];
+  const diseaseList = [];
 
   const onChangeText = (id, value) =>
     setUser({
@@ -114,9 +123,25 @@ function Signup({navigation}) {
               style={styles.text}
             />
           </View>
-          <View style={styles.input}>
+          <View style={styles.allergy}>
             <Text style={styles.text}>보유한 질병</Text>
-            <TextInput style={styles.text} />
+            <View style={styles.allergyView}>
+              {disease.map((item, index) => {
+                return (
+                  <BouncyCheckbox
+                    key={index}
+                    text={item}
+                    fillColor="#63666E"
+                    unfillColor="#fff"
+                    iconStyle={{borderColor: '#63666E'}}
+                    textStyle={{color: '#63666E', fontSize: 20, width: 70}}
+                    onPress={isChecked => {
+                      diseaseList.push(item), console.log(diseaseList);
+                    }}
+                  />
+                );
+              })}
+            </View>
           </View>
           <View style={styles.allergy}>
             <Text style={styles.text}>보유한 알레르기</Text>
