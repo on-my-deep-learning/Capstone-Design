@@ -13,10 +13,10 @@ const Restaurant = {
   },
   name: async (category) => {
     const query = `SELECT restaurant_name FROM restaurant_info WHERE category = ?`;
-    console.log('1111: ', category);
+    console.log("1111: ", category);
     const result = await db.query(query, [category]);
 
-    console.log(result);
+    console.log("restaurant:", result);
     return result;
   },
 };
