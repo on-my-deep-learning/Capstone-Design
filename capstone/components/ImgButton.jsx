@@ -1,11 +1,10 @@
 import React from 'react';
-import {TouchableOpacity, StyleSheet, View, Text, Image} from 'react-native';
+import {TouchableOpacity, StyleSheet, View, Text} from 'react-native';
 
-const Button = ({title, img, onPress}) => (
+const Button = ({title, onPress}) => (
   <TouchableOpacity style={styles.button} onPress={onPress}>
     <View style={styles.container}>
       <View style={styles.imgView} />
-      {/* <Image source={require(img)} style={styles.imgView} /> */}
       <View style={styles.description}>
         <Text style={styles.text}>{title}</Text>
         {/* <Text style={styles.text}>15,000</Text> */}

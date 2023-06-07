@@ -1,38 +1,42 @@
-import React, {useEffect, useState} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import axios from 'axios';
 
-function Restaurant({route, navigation}) {
-  const {restaurant} = route.params;
+
+function Restaurant({ route, navigation }) {
+  const { restaurant, id} = route.params;
   const [food, setFood] = useState([]);
 
+
   useEffect(() => {
-    console.log(restaurant);
+    console.log("restaurant :", restaurant);
+    console.log("id_Rest :", id);
     fetchFood();
-  }, [restaurant]);
+  }, []);
 
-  const fetchFood = async () => {
-    console.log('restaurant: ', restaurant);
-    try {
-      const response = await axios.get('http:/localhost:3000/menu/select', {
-        params: {
-          restaurant: restaurant,
-        },
-      });
-      const result = response.data;
-      console.log('result :', result);
-      setFood(result.food);
-    } catch (error) {
-      console.error('Error fetching food:', error);
-    }
-  };
+const fetchFood = async () => {
+  try {
+    const response = await axios.get('http://192.168.50.49:3000/menu/name', {
+      params: {
+        restaurant: restaurant.restaurant_name,
+        id1 : id,
+        id2 : id
+      }
+    });
 
-  const handleFoodPress = item => {
-    const restaurant = {
+    const result = response.data;
+    setFood(result.food);
+  } catch (error) {
+    console.error('Error fetching food:', error);
+  }
+};
+
+  const handleFoodPress = (item) => {
+    const selectedFood = {
       food_name: item.food_name,
-      food_idx: item.food_idx,
+
     };
-    navigation.navigate('Restaurant', {restaurant});
+    navigation.navigate('Restaurant', { selectedFood });
   };
 
   return (
@@ -42,14 +46,15 @@ function Restaurant({route, navigation}) {
           <TouchableOpacity
             key={index.toString()}
             style={styles.foodButton}
-            onPress={() => handleFoodPress(item)}>
+            onPress={() => handleFoodPress(item)}
+          >
             <Text style={styles.foodButtonText}>{item.food_name}</Text>
           </TouchableOpacity>
         ))}
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

@@ -14,7 +14,7 @@ import MyButton from '../components/Button';
 import UserButton from '../components/UserButton';
 import useStore from '../store.js';
 
-function Home({navigation}) {
+function Home({navigation, route}) {
   const {id} = useStore(state => state);
   return (
     <SafeAreaView style={styles.container}>
@@ -34,11 +34,11 @@ function Home({navigation}) {
         </View>
         <MyButton
           title="AI 추천 받기"
-          onPress={() => navigation.navigate('Recommend')}
+          onPress={() => navigation.navigate('Recommend', {id : id})}
         />
         <MyButton
           title="다른거 먹을래요"
-          onPress={() => navigation.navigate('Delivery')}
+          onPress={() => navigation.navigate('Delivery', {id : id} )}
         />
       </View>
     </SafeAreaView>
