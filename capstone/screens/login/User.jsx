@@ -19,10 +19,10 @@ function Home({navigation}) {
       <View style={styles.buttonView}>
         <Text style={styles.myText}>아이디 : {id}</Text>
         <Text style={styles.myText}>AI레벨 : 1</Text>
-        <SlimButton
-          title="개인정보 수정"
+        {/* <SlimButton
+          title="추가 설문 하러가기"
           onPress={() => navigation.navigate('Survey')}
-        />
+        /> */}
         <SlimButton
           title="주문 내역"
           onPress={() => navigation.navigate('History')}

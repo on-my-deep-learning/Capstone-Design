@@ -17,15 +17,16 @@ function Signup({navigation}) {
   const [sliderValue_a, setSliderValue_a] = useState(0);
   const [sliderValue_b, setSliderValue_b] = useState(0);
   const [sliderValue_c, setSliderValue_c] = useState(0);
-  let [disease, setdisease] = useState([
-    '고혈압',
-    '당뇨',
-    '간질환',
-    '위질환',
-    '신장질환',
-    '심장질환',
+
+  const [disease, setDisease] = useState([
+    '심근경색',
+    '설사',
+    '역류성 식도염',
+    '위 궤양',
+    '간질',
+    '심부전',
   ]);
-  let [allergy, setallergy] = useState([
+  const [allergy, setallergy] = useState([
     '새우',
     '굴',
     '게',
@@ -33,21 +34,21 @@ function Signup({navigation}) {
     '오징어',
     '전복',
     '고등어',
-    '조개류',
+    '치즈',
     '메밀',
     '밀',
     '대두',
-    '호두',
+    '감자',
     '땅콩',
     '잣',
-    '가금류',
+    '달걀',
     '우유',
     '쇠고기',
     '돼지고기',
     '닭고기',
     '복숭아',
     '토마토',
-    // '아황산류',
+    '오이',
   ]);
   const [user, setUser] = useState({
     id: '',
@@ -59,8 +60,8 @@ function Signup({navigation}) {
   });
 
   const {id, password, name, address, phone, nickname} = user;
-  const allergyList = [];
-  const diseaseList = [];
+    const [allergyList, setAllergyList] = useState([]); // 수정: useState를 통해 상태와 업데이트 함수를 생성합니다.
+    const [diseaseList, setDiseaseList] = useState([]); // 수정: useState를 통해 상태와 업데이트 함수를 생성합니다.
 
   const onChangeText = (id, value) =>
     setUser({
@@ -70,7 +71,17 @@ function Signup({navigation}) {
 
   const onSubmit = async () => {
     try {
-      await axios.post('http://127.0.0.1:3000/users/signup', user);
+      const userData = {
+        ...user,
+        diseaseList: diseaseList,
+        allergyList: allergyList,
+        sliderValue_a: sliderValue_a,
+        sliderValue_b: sliderValue_b,
+        sliderValue_c: sliderValue_c,
+      };
+
+    console.log("userData:", userData);
+      await axios.post('http://192.168.50.49:3000/users/signup', userData);
     } catch (err) {
       // toast
       console.log(err);
@@ -123,26 +134,36 @@ function Signup({navigation}) {
               style={styles.text}
             />
           </View>
-          <View style={styles.allergy}>
-            <Text style={styles.text}>보유한 질병</Text>
-            <View style={styles.allergyView}>
-              {disease.map((item, index) => {
-                return (
-                  <BouncyCheckbox
-                    key={index}
-                    text={item}
-                    fillColor="#63666E"
-                    unfillColor="#fff"
-                    iconStyle={{borderColor: '#63666E'}}
-                    textStyle={{color: '#63666E', fontSize: 20, width: 70}}
-                    onPress={isChecked => {
-                      diseaseList.push(item), console.log(diseaseList);
-                    }}
-                  />
-                );
-              })}
+            <View style={styles.disease}>
+              <Text style={styles.text}>보유한 질병</Text>
+              <View style={styles.diseaseView}>
+                {disease.map((item, index) => {
+                  return (
+                    <View key={index} style={styles.diseaseButton}>
+                      <BouncyCheckbox
+                        text={item}
+                        fillColor="#63666E"
+                        unfillColor="#fff"
+                        iconStyle={{ borderColor: '#63666E' }}
+                        textStyle={{ color: '#63666E', fontSize: 20, width: 70 }}
+                        onPress={isChecked => {
+                          if (!diseaseList.includes(item)) {
+                            diseaseList.push(item);
+                            console.log(diseaseList);
+                          } else {
+                            const index = diseaseList.indexOf(item);
+                            if (index !== -1) {
+                              diseaseList.splice(index, 1);
+                              console.log(diseaseList);
+                            }
+                          }
+                        }}
+                      />
+                    </View>
+                  );
+                })}
+              </View>
             </View>
-          </View>
           <View style={styles.allergy}>
             <Text style={styles.text}>보유한 알레르기</Text>
             <View style={styles.allergyView}>
@@ -156,7 +177,17 @@ function Signup({navigation}) {
                     iconStyle={{borderColor: '#63666E'}}
                     textStyle={{color: '#63666E', fontSize: 20, width: 70}}
                     onPress={isChecked => {
-                      allergyList.push(item), console.log(allergyList);
+                        if (!allergyList.includes(item)){
+                            allergyList.push(item);
+                            console.log(allergyList);
+                        }
+                        else {
+                            const index = allergyList.indexOf(item);
+                            if (index !== -1) {
+                              allergyList.splice(index, 1);
+                              console.log(allergyList);
+                            }
+                          }
                     }}
                   />
                 );
@@ -243,16 +274,30 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
   },
+  disease: {
+    width: '100%',
+    borderBottomWidth: 1,
+    borderBottomColor: 'grey',
+  },
   allergy: {
     width: '100%',
     borderBottomWidth: 1,
     borderBottomColor: 'grey',
   },
-  allergyView: {
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
+diseaseView: {
+  flexWrap: 'wrap',
+  flexDirection: 'row',
+  justifyContent: 'center', // 중앙 정렬로 변경
+  alignItems: 'center', // 수직 중앙 정렬 추가
+  width: '100%', // 가로 폭 100% 설정
+},
+allergyView: {
+  flexWrap: 'wrap',
+  flexDirection: 'row',
+  justifyContent: 'center', // 중앙 정렬로 변경
+  alignItems: 'center', // 수직 중앙 정렬 추가
+  width: '100%', // 가로 폭 100% 설정
+},
 });
 
 export default Signup;

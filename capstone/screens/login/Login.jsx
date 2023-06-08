@@ -29,18 +29,18 @@ function Login({navigation}) {
 
   const onSubmit = async () => {
     try {
-      const res = await axios.post('http://127.0.0.1:3000/users/login', user);
+      const res = await axios.post('http://192.168.50.49:3000/users/login', user);
       const res_token = res.data.token;
       useStore.setState({id: id});
       useStore.setState({token: res_token});
-      console.log(useStore.getState());
+      console.log(useStore.getState())
     } catch (err) {
       // toast
       console.log(err);
       setVisible(!visible);
       return;
     }
-    navigation.navigate('Home');
+    navigation.navigate('Home', { id : id });
     setVisible(visible);
   };
   return (

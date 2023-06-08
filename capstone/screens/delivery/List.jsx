@@ -1,25 +1,25 @@
-import React, {useEffect, useState} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import axios from 'axios';
 
-function List({route, navigation}) {
-  const {category} = route.params;
+function List({ route, navigation }) {
+  const { category, id } = route.params;
+
   const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
+    console.log("id_List", id);
     fetchRestaurants();
   }, [category]);
 
   const fetchRestaurants = async () => {
     try {
-      const response = await axios.get(
-        'http://localhost:3000/restaurant/name',
-        {
-          params: {
-            category: category,
-          },
-        },
-      );
+      const response = await axios.get('http://192.168.50.49:3000/restaurant/name', {
+        params: {
+          category: category,
+
+        }
+      });
       const result = response.data;
       setRestaurants(result.restaurants);
     } catch (error) {
@@ -27,13 +27,13 @@ function List({route, navigation}) {
     }
   };
 
-  const handleRestaurantPress = item => {
+  const handleRestaurantPress = (item) => {
     const restaurant = {
-      restaurant_index: item.restaurant_index,
       restaurant_name: item.restaurant_name,
+
     };
 
-    navigation.navigate('Restaurant', {restaurant});
+    navigation.navigate('Restaurant', { restaurant, id });
   };
 
   return (
@@ -43,10 +43,9 @@ function List({route, navigation}) {
           <TouchableOpacity
             key={index.toString()}
             style={styles.restaurantButton}
-            onPress={() => handleRestaurantPress(item)}>
-            <Text style={styles.restaurantButtonText}>
-              {item.restaurant_name}
-            </Text>
+            onPress={() => handleRestaurantPress(item)}
+          >
+            <Text style={styles.restaurantButtonText}>{item.restaurant_name}</Text>
           </TouchableOpacity>
         ))}
       </View>

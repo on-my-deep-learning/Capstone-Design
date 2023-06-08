@@ -10,12 +10,13 @@ function Menu({navigation, route}) {
         <Text style={styles.title}>{route.params.id}</Text>
         <Text style={styles.text}>가격 : 10,900원</Text>
         <Text style={styles.text}>
-          메뉴 설명 : 베이컨과 크림이 조화로운 크림파스타
+          메뉴 설명 : 노란콩이 들어간 건강한 샐러드 (병아리콩, 토마토, 양상추,
+          케일, 적상추, 삶은계란)
         </Text>
         <Text style={styles.text}>주문 수량 : 1</Text>
-        <Text style={styles.center}>------맛 선택------</Text>
+        <Text style={styles.center}>------토핑 선택------</Text>
         <BouncyCheckbox
-          text="기본맛"
+          text="닭가슴살"
           fillColor="black"
           unfillColor="#fff"
           iconStyle={{borderColor: 'black'}}
@@ -23,7 +24,7 @@ function Menu({navigation, route}) {
           onPress={isChecked => console.log(isChecked)}
         />
         <BouncyCheckbox
-          text="조금 매운맛"
+          text="닭다리살"
           fillColor="black"
           unfillColor="#fff"
           iconStyle={{borderColor: 'black'}}
@@ -31,7 +32,40 @@ function Menu({navigation, route}) {
           onPress={isChecked => console.log(isChecked)}
         />
         <BouncyCheckbox
-          text="매운맛"
+          text="불고기"
+          fillColor="black"
+          unfillColor="#fff"
+          iconStyle={{borderColor: 'black'}}
+          textStyle={{color: 'black'}}
+          onPress={isChecked => console.log(isChecked)}
+        />
+        <BouncyCheckbox
+          text="오리"
+          fillColor="black"
+          unfillColor="#fff"
+          iconStyle={{borderColor: 'black'}}
+          textStyle={{color: 'black'}}
+          onPress={isChecked => console.log(isChecked)}
+        />
+        <Text style={styles.center}>------드레싱 선택------</Text>
+        <BouncyCheckbox
+          text="오리엔탈"
+          fillColor="black"
+          unfillColor="#fff"
+          iconStyle={{borderColor: 'black'}}
+          textStyle={{color: 'black'}}
+          onPress={isChecked => console.log(isChecked)}
+        />
+        <BouncyCheckbox
+          text="발사믹"
+          fillColor="black"
+          unfillColor="#fff"
+          iconStyle={{borderColor: 'black'}}
+          textStyle={{color: 'black'}}
+          onPress={isChecked => console.log(isChecked)}
+        />
+        <BouncyCheckbox
+          text="스위트칠리"
           fillColor="black"
           unfillColor="#fff"
           iconStyle={{borderColor: 'black'}}
@@ -69,7 +103,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   buttonMargin: {
-    marginTop: 300,
+    marginTop: 200,
   },
   center: {
     textAlign: 'center',
